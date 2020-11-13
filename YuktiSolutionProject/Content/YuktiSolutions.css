@@ -1,0 +1,29 @@
+﻿.container {
+    background-color: #FFFFFF;
+    width: 50%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.skillz {
+    text-align: center;
+    color: #B70320;
+    padding-top: 50px;
+}
+
+.better {
+    text-align: center;
+    color: #858585;
+    margin-top: auto;
+}
+
+.btn {
+    background-color: #B70320;
+    color: #F8F8F8;
+}
+
+.forgetpwd {
+    color: #B70320;
+    float: right;
+}
