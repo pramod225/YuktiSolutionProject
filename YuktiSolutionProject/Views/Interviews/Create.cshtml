@@ -10,50 +10,53 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
   @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-horizontal">
-                            <div class="col-md-10">
-                                @Html.LabelFor(model => model.InterviewName)
-                            </div>
-                            <div class="col-md-12">
-                                @Html.EditorFor(model => model.InterviewName, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.InterviewName, "", new { @class = "text-danger" })
+  {
+ @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.InterviewName)
+            </div>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.InterviewName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InterviewName, "", new { @class = "text-danger" })
 
-                            </div>
+            </div>
 
-                            <div class="col-lg-10">
-                                @Html.LabelFor(model => model.SkillLevel)
-                            </div>
-                            <div class="col-md-10 ">
-                                @Html.EnumDropDownListFor(model => model.SkillLevel, htmlAttributes: new { @class = "form-control" })
-                            </div>
+            <div class="col-lg-10">
+                @Html.LabelFor(model => model.SkillLevel)
+            </div>
+            <div class="col-md-10 ">
+                @Html.EnumDropDownListFor(model => model.SkillLevel, htmlAttributes: new { @class = "form-control" })
+            </div>
 
 
-                            <div class="col-lg-10">
-                                @Html.LabelFor(model => model.AssessmentMode)
-                            </div>
+            <div class="col-lg-10">
+                @Html.LabelFor(model => model.AssessmentMode)
+            </div>
 
-                            <div class="col-lg-10">
-                                @foreach (var AssessmentModeEnum in Enum.GetValues(typeof(AssessmentModeEnum)))
-                                {
-                                    var id = TagBuilder.CreateSanitizedId(string.Format("{0}_{1}_{2}", "rdbtn", typeof(AssessmentModeEnum), AssessmentModeEnum));
-                                    <div class="radio-inline col-lg-3">
-                                        @Html.RadioButtonFor(model => model.AssessmentMode, AssessmentModeEnum, new { id, @class = "control-label col-md-2 " })
-                                        @Html.Label(AssessmentModeEnum.ToString(), new { @for = id })
-                                    </div>
-                                }
-                            </div>
+            <div class="col-lg-10">
+                @foreach (var AssessmentModeEnum in Enum.GetValues(typeof(AssessmentModeEnum)))
+                {
+                    var id = TagBuilder.CreateSanitizedId(string.Format("{0}_{1}_{2}", "rdbtn", typeof(AssessmentModeEnum), AssessmentModeEnum));
+                    <div class="radio-inline col-lg-3">
+                        @Html.RadioButtonFor(model => model.AssessmentMode, AssessmentModeEnum, new { id, @class = "control-label col-md-2 " })
+                        @Html.Label(AssessmentModeEnum.ToString(), new { @for = id })
+                    </div>
+                }
+            </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-pull-0 col-lg-8">
-                                    <input type="submit" value="Save Changes" class="btn btn-danger col-lg-6" style="border-radius:20px;" />
-                                    <input type="submit" value="Close " class="btn btn-default col-lg-4" style="border-radius:20px;" />
+            <div class="form-group">
+                <div class="col-sm-pull-0 col-lg-8">
+                    <input type="submit" value="Save Changes" class="btn btn-danger col-lg-6" style="border-radius:20px;" />
+                    <input type="submit" value="Close " class="btn btn-default col-lg-4" style="border-radius:20px;" />
 
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
 
-                    }
-            
 
