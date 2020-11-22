@@ -1,43 +1,47 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yukti Solutions</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <title>@ViewBag.Title -Skillz</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+
+   <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
 </head>
-<body class="col-lg-10 ">
-    <div class="navbar navbar-expand-sm bg-danger navbar-dark">"
-        <div class="container   ">
-            <div class="navbar-header" ">
-                @Html.ActionLink("SKILLZ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="color:#B70320;">
-                    @Html.ActionLink("DASHBORD", "Index", "Dashbord", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("INTERVIEWS", "Index", "Interviews", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("SkILL GROUPS", "Index", "SkillGroup", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("BLOG", "Index", "Blog", new { area = "" }, new { @class = "navbar-brand" })
-                    @Html.ActionLink("CONTACT", "Index", "Contact", new { area = "" }, new { @class = "navbar-brand" })
-                    
+<body class="container">
+    <nav class="navbar navbar-inverse" style="border-radius:0px 0px; background: #B70320 0% 0% no-repeat padding-box; opacity: 0.9;">
+        <div class="container-fluid">
+            <div class="navbar-header   ">
+                @Html.ActionLink("SKILLZ", "", "", new { area = "" }, new { @class = "navbar-brand" })
 
-                </ul>
             </div>
+            <ul class="nav navbar-nav" style=" text-align: left; font: normal normal normal 8px/8px Arial; letter-spacing: 0px; color: #FFFFFF; opacity: 1;">
+                @Html.ActionLink("DASHBORD", "Index", "Dashbord", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("INTERVIEWS", "Index", "Interviews", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SkILL GROUPS", "Index", "SkillGroups", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("BLOG", "Index", "Blog", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("CONTACT", "Index", "Contact", new { area = "" }, new { @class = "navbar-brand" })
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="text-align: left; font: normal normal normal 10px/12px Arial; letter-spacing: 0px; color: #FFFFFF; opacity: 1;">
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+    <text class="text-danger"> Dashoard /</text>
+    @RenderBody()
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2020- Yukti Solutions Private Limited. All rights reserved</p>
-        </footer>
-    </div>
-
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <hr />
+    <footer class="container-fluid">
+        <p class="footer">&copy; @DateTime.Now.Year - Yukti Solutions Private Limited. All Rights Reserved.</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

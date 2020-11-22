@@ -10,110 +10,107 @@ using YuktiSolutionProject.Models;
 
 namespace YuktiSolutionProject.Controllers
 {
-    public class InterviewsController : Controller
+    public class SkillGroupsController : Controller
     {
         private SkillDbContext db = new SkillDbContext();
 
-        // GET: Interviews
+        // GET: SkillGroups
         public ActionResult Index()
         {
-            return View(db.interviews.ToList());
+            return View(db.SkillGroups.ToList());
         }
 
-        // GET: Interviews/Details/5
+        // GET: SkillGroups/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Interview interview = db.interviews.Find(id);
-            if (interview == null)
+            SkillGroup skillGroup = db.SkillGroups.Find(id);
+            if (skillGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(interview);
+            return View(skillGroup);
         }
 
-        // GET: Interviews/Create
+        // GET: SkillGroups/Create
         public ActionResult Create()
         {
-            Interview interview = new Interview();
-            return View(interview);
+            return View();
         }
 
-        // POST: Interviews/Create
+        // POST: SkillGroups/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Interview interview)
+        public ActionResult Create([Bind(Include = "SkillGroupId,SkillGroupName,Skill,Assmode")] SkillGroup skillGroup)
         {
-            ViewBag.value = "1";
             if (ModelState.IsValid)
             {
-               
-                db.interviews.Add(interview);
+                db.SkillGroups.Add(skillGroup);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(interview);
+            return View(skillGroup);
         }
 
-        // GET: Interviews/Edit/5
+        // GET: SkillGroups/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Interview interview = db.interviews.Find(id);
-            if (interview == null)
+            SkillGroup skillGroup = db.SkillGroups.Find(id);
+            if (skillGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(interview);
+            return View(skillGroup);
         }
 
-        // POST: Interviews/Edit/5
+        // POST: SkillGroups/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InterviewId,InterviewName,SkillLevel,AssessmentMode,Status")] Interview interview)
+        public ActionResult Edit([Bind(Include = "SkillGroupId,SkillGroupName,Skill,Assmode")] SkillGroup skillGroup)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(interview).State = EntityState.Modified;
+                db.Entry(skillGroup).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(interview);
+            return View(skillGroup);
         }
 
-        // GET: Interviews/Delete/5
+        // GET: SkillGroups/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Interview interview = db.interviews.Find(id);
-            if (interview == null)
+            SkillGroup skillGroup = db.SkillGroups.Find(id);
+            if (skillGroup == null)
             {
                 return HttpNotFound();
             }
-            return View(interview);
+            return View(skillGroup);
         }
 
-        // POST: Interviews/Delete/5
+        // POST: SkillGroups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Interview interview = db.interviews.Find(id);
-            db.interviews.Remove(interview);
+            SkillGroup skillGroup = db.SkillGroups.Find(id);
+            db.SkillGroups.Remove(skillGroup);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

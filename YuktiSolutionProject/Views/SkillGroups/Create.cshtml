@@ -1,0 +1,54 @@
+﻿@model YuktiSolutionProject.Models.SkillGroup
+@using YuktiSolutionProject.Models;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal css">
+    <hr />
+    <div class="col-md-10">
+        @Html.LabelFor(model => model.SkillGroupName,"Skill Group Name")
+     </div>
+        <div class="col-lg-12">
+            @Html.EditorFor(model => model.SkillGroupName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SkillGroupName, "", new { @class = "text-danger" })
+        </div>
+    
+
+    <div class="col-md-10">
+        @Html.LabelFor(model => model.Skill, "Level 1")
+        </div>
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Skill, htmlAttributes: new { @class = "form-control" })
+
+        </div>
+
+    <div class="col-md-10">
+        @Html.LabelFor(model => model.Assmode, "Assessment Mode")
+        </div>
+        <div class="col-md-12">
+
+            @Html.EnumDropDownListFor(model => model.Assmode, htmlAttributes: new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-pull-0 col-lg-8">
+            <input type="submit" value="Save Changes" class="btn btn-danger col-lg-5" style="border-radius:20px;" />
+            <input type="submit" value="Close " class="btn btn-default col-lg-4" style="border-radius:20px;" />
+
+        </div>
+    </div>
+    </div>
+    }
+
+

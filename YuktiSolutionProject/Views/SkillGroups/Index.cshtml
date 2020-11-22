@@ -1,0 +1,80 @@
+﻿@model IEnumerable<YuktiSolutionProject.Models.SkillGroup>
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/SkillGroup.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link href="~/Content/style.css" rel="stylesheet" />
+<h2 class="myh2">Skill Groups</h2>
+<script>
+    $(document).ready(function () {
+        $('#select_all').click(function (e) {
+            $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+        });
+    });
+</script>
+
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" name="search">
+    <div class="input-group-btn">
+            <i class="glyphicon glyphicon-search"></i>
+            <button type="button" class="btn btn-danger" style="border-radius:20px;"><span class="glyphicon glyphicon-plus">&nbsp;</span>@Html.ActionLink("New Skill Group", "Create", "SkillGroups", new { Style = "color:#FFFFFF" }, new { @data_toggle = "modal", @data_target = "#skillModel" })</button>
+            <button type="button" class="btn" style="border-radius:20px;"><span class="glyphicon glyphicon-remove">&nbsp;</span>@Html.ActionLink("Delete Selected", "Delete", "SkillGroups", new { Style = "color:#2D2121" })</button>
+            <button type="button" class="btn" style="border-radius:20px;"><span class="glyphicon glyphicon-option-vertical">&nbsp;</span>@Html.ActionLink("More Options", "", "", new { Style = "color:#2D2121" })</button>
+
+    </div>
+</div>
+
+<div id="skillModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SkillGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assmode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillGroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assmode)
+            </td>
+
+        </tr>
+    }
+
+</table>
